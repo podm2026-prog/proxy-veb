@@ -1,11 +1,37 @@
 {
   "name": "ProxyPilot Mobile",
   "short_name": "ProxyPilot",
-  "description": "Маршрутизация выбранных доменов через свой прокси.",
-  "start_url": "/",
+  "description": "Маршрутизация выбранных доменов через свой HTTP/SOCKS прокси.",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#1a1d24",
+  "orientation": "portrait",
+  "background_color": "#0f1117",
   "theme_color": "#4f46e5",
   "lang": "ru",
-  "icons": []
+  "categories": ["utilities", "productivity"],
+  "icons": [
+    {
+      "src": "../proxypilot-chrome-0.12.0/icons/app-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "../proxypilot-chrome-0.12.0/icons/app-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Настройки прокси",
+      "short_name": "Настройки",
+      "description": "Открыть настройки прокси",
+      "url": "./index.html#settings",
+      "icons": [{ "src": "../proxypilot-chrome-0.12.0/icons/app-96.png", "sizes": "96x96" }]
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
 }
