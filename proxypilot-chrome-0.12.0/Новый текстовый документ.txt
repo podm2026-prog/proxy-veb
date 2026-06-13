@@ -1,0 +1,1 @@
+https://github.com/Aimagine-life/proxypilot/releases/tag/v0.12.0

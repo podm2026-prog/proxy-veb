@@ -1,0 +1,11 @@
+{
+  "name": "ProxyPilot Mobile",
+  "short_name": "ProxyPilot",
+  "description": "Маршрутизация выбранных доменов через свой прокси.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1d24",
+  "theme_color": "#4f46e5",
+  "lang": "ru",
+  "icons": []
+}
