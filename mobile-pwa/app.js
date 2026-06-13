@@ -552,29 +552,28 @@ async function pickFreeProxy() {
 async function runTest(type) {
   const resultEl = document.getElementById('test-result');
   resultEl.hidden = false;
-  resultEl.className = 'test-result-card';
-  resultEl.textContent = '🔄 Проверяю…';
+  resultEl.className = 'test-result-card ok';
 
-  // In the PWA we can only do a basic connectivity test
-  const host = document.getElementById('cfg-host').value.trim() || state.proxy?.host;
+  const host = state.proxy?.host || document.getElementById('cfg-host').value.trim();
+  const port = state.proxy?.port || document.getElementById('cfg-port').value.trim();
+
   if (!host) {
     resultEl.className = 'test-result-card err';
-    resultEl.textContent = '✗ Сначала введи хост прокси';
+    resultEl.textContent = '✗ Сначала заполни хост прокси и нажми «Сохранить и подключить»';
     return;
   }
 
-  try {
-    const start = Date.now();
-    // Can't directly test proxy from browser — show a helpful message
-    const ms = Date.now() - start;
-    resultEl.className = 'test-result-card warn';
-    resultEl.innerHTML = `⚠ Проверка прокси недоступна в мобильном PWA.<br>
-      Для полной проверки используй расширение в Chrome или Яндекс.Браузере.<br><br>
-      <span style="font-size:11px;opacity:.7">Прокси: <code>${host}</code></span>`;
-  } catch (e) {
-    resultEl.className = 'test-result-card err';
-    resultEl.textContent = `✗ Ошибка: ${e.message}`;
-  }
+  resultEl.className = 'test-result-card ok';
+  resultEl.innerHTML = `
+    <div style="width:100%">
+      <div style="font-weight:700;margin-bottom:8px;">✓ Прокси сохранён: <code style="font-size:12px;">${host}:${port || '—'}</code></div>
+      <div style="font-size:12px;color:var(--text-dim);line-height:1.6;">
+        <b>Как применить на телефоне:</b><br>
+        📱 <b>Android:</b> Настройки → Wi-Fi → удержи сеть → Изменить → Прокси вручную → введи хост и порт<br>
+        🍎 <b>iPhone:</b> Настройки → Wi-Fi → ⓘ рядом с сетью → Прокси HTTP → Вручную<br><br>
+        <span style="opacity:.7;">Для проверки подключения используй расширение в Яндекс.Браузере или Chrome на компьютере.</span>
+      </div>
+    </div>`;
 }
 
 // ─── Toast ─────────────────────────────────────────────────────────────────────
